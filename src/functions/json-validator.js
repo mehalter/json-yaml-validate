@@ -1,10 +1,14 @@
 import * as core from '@actions/core'
 import Ajv from 'ajv'
+import addFormats from 'ajv-formats'
 import {readFileSync} from 'fs'
 import {globSync} from 'glob'
 
 // setup the ajv instance
 const ajv = new Ajv() // options can be passed, e.g. {allErrors: true}
+if (core.getInput('json_formats') === 'true') {
+  addFormats(ajv)
+}
 
 // Helper function to setup the schema
 // :param jsonSchema: path to the jsonSchema file

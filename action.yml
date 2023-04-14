@@ -1,6 +1,6 @@
-name: "json-yaml-validate"
-description: "A GitHub Action to quickly validate JSON and YAML files in a repository"
-author: "Grant Birkinbine"
+name: 'json-yaml-validate'
+description: 'A GitHub Action to quickly validate JSON and YAML files in a repository'
+author: 'Grant Birkinbine'
 branding:
   icon: 'check'
   color: 'green'
@@ -12,50 +12,54 @@ inputs:
   mode:
     description: The mode to run the action in "warn" or "fail" - Default is "fail"
     required: false
-    default: "fail"
+    default: 'fail'
   comment:
     description: Whether or not to comment on a PR with the validation results - "true" or "false" - Default is "false"
     required: false
-    default: "false"
+    default: 'false'
   base_dir:
     description: The base directory to search for JSON and YAML files (e.g. ./src) - Default is "." which searches the entire repository
     required: false
-    default: "."
+    default: '.'
   json_schema:
     description: The full path to the JSON schema file (e.g. ./schemas/schema.json) - Default is "" which doesn't enforce a strict schema
     required: false
-    default: ""
+    default: ''
   json_extension:
     description: The file extension for JSON files (e.g. .json) - Default is ".json"
     required: false
-    default: ".json"
+    default: '.json'
   json_exclude_regex:
     description: A regex to exclude JSON files from validation (e.g. .*\.schema\.json$) - Default is "" which doesn't exclude any files
     required: false
-    default: ""
+    default: ''
+  json_formats:
+    description: Whether or not to use ajv-formats package to check formats - "true" or "false" - Default is "false"
+    required: false
+    default: 'false'
   yaml_schema:
     description: The full path to the YAML schema file (e.g. ./schemas/schema.yml) - Default is "" which doesn't enforce a strict schema
     required: false
-    default: ""
+    default: ''
   yaml_extension:
     description: The file extension for YAML files (e.g. .yaml) - Default is ".yaml"
     required: false
-    default: ".yaml"
+    default: '.yaml'
   yaml_extension_short:
     description: The "short" file extension for YAML files (e.g. .yml) - Default is ".yml"
     required: false
-    default: ".yml"
+    default: '.yml'
   yaml_exclude_regex:
     description: A regex to exclude YAML files from validation (e.g. .*\.schema\.yaml$) - Default is "" which doesn't exclude any files
     required: false
-    default: ""
+    default: ''
   exclude_file:
     description: The full path to a file in the repository where this Action is running that contains a list of '.gitignore'-style patterns to exclude files from validation (e.g. ./exclude.txt)
     required: false
-    default: ""
+    default: ''
 outputs:
   success:
     description: Whether or not the validation was successful for all files - "true" or "false"
 runs:
-  using: "node16"
-  main: "dist/index.js"
+  using: 'node16'
+  main: 'dist/index.js'
